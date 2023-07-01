@@ -1,0 +1,3 @@
+[submodule "linklogger-ui"]
+	path = linklogger-ui
+	url = https://github.com/paradon/linklogger-ui

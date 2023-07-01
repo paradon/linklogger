@@ -55,10 +55,6 @@ function getFileByName(name: string) {
 
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hai');
-});
-
 function headingTemplate({ url, title }: { url?: string; title?: string }) {
   if (!url) {
     return title;
@@ -110,6 +106,7 @@ app.post(
   },
 );
 
+app.use(express.static('linklogger-ui/build'));
 
 app.listen(port, () => {
   console.log(`[server] Listening on http://localhost:${port}`);
