@@ -108,6 +108,15 @@ app.post(
 
 app.use(express.static('linklogger-ui/build'));
 
+// Unknown routes return index.html as they may be React routes
+app.use(function (req: Request, res: Response, next: NextFunction) {
+  try {
+    res.sendFile('linklogger-ui/build/index.html', { root: process.cwd() });
+  } catch (err) {
+    return next();
+  }
+});
+
 app.listen(port, () => {
   console.log(`[server] Listening on http://localhost:${port}`);
 });
